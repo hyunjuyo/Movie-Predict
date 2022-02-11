@@ -94,20 +94,25 @@
 
 ### 피쳐엔지니어링 및 모델링(9차)
 * 추가 반영할 Feature별 세부검토
+* "crew_main" 컬럼에서 crew별 종합점수를 계산한 컬럼 추가
+  - 주요 crew가 약 6.3천명 정도이며 영화건수를 기준으로 상위 5천명의 crew 정보만 추출해 점수 산출함
 
+> Train Data RMSE : 20.87<br>
+> Test Data RMSE : 88.74<br>
 
-> Train Data RMSE : 43.38<br>
-> Test Data RMSE : 125.71<br>
-
-&nbsp;&nbsp;=> 1차 모델링에 비해 확실히 성능이 개선된 것으로 확인됨
+&nbsp;&nbsp;=> 향상폭이 크지는 않지만 Train과 Test 데이터 모두에서 성능이 향상된 것으로 확인됨
 
 -----
 
 ### 피쳐엔지니어링 및 모델링(10차)
-* 추가 반영할 Feature별 세부검토
+* 현재까지 정리된 9개 Feature를 기준으로 추가 검토 진행
+  - 9개 Feature : 'original_language_le', 'budget', 'runtime', 'genre_score_total', 'prod_score_total', 'prod_countries_score_total', 'budget_grade', 'cast_name_score_total', 'crew_main_score_total'
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/76440511/153566092-d7b19a27-0025-4148-96e2-153793c2474f.png">
+
+> Train Data RMSE : 20.48<br>
+> Test Data RMSE : 88.79<br>
+
+&nbsp;&nbsp;=> 의미있는 성능 향상은 나타나지 않음
 
 
-> Train Data RMSE : 43.38<br>
-> Test Data RMSE : 125.71<br>
 
-&nbsp;&nbsp;=> 1차 모델링에 비해 확실히 성능이 개선된 것으로 확인됨
