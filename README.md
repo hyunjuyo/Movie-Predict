@@ -1,18 +1,22 @@
-# 주요 지표 기준 영화 성공예측 프로젝트
+# "The Movies Dataset"을 활용한 영화 성공 예측 프로젝트
+* 장르, 예산, 수익, 프로덕션, 개봉일 등 각종 메타데이터와 영화의 키워드 및 출연진, 제작진 데이터를 활용한 머신러닝 수행
+* EDA, 피쳐 엔지니어링 및 모델링과 하이퍼파라미터 튜닝, 테스트 과정을 통해 최적의 예측 모델을 선정
+<br>
 
 ## 데이터 정보
 * 캐글 ‘The Movies Dataset’ 활용(https://www.kaggle.com/rounakbanik/the-movies-dataset)
 * 2017년 7월 이전 개봉한 45,000편 이상의 영화 데이터셋
-* 장르, 예산, 수익, 프로덕션, 개봉일 등 각종 메타데이터와 영화의 키워드 및 출연진, 제작진 데이터 포함
+<br>
 
-## EDA/전처리 및 예측 지표 선정 검토
+## EDA/전처리 및 예측 지표 선정
 <img width="443" alt="image" src="https://user-images.githubusercontent.com/76440511/153559041-209baba5-4b31-40aa-b799-1fc508ae6b88.png">
 <img width="600" alt="image" src="https://user-images.githubusercontent.com/76440511/153558822-044cf261-9b2a-4c05-bbf0-5046f3027079.png">
+<br>
 
 ## Feature Engineering 및 Modeling 주요 진행 경과
 
 ### 기본 방향 설정
-* 학습은 우선 Random Forest를 기반으로 결과를 확인해가며 피쳐 엔지니어링 과정을 통해 성능을 향상시키는 데에 집중하고자 함
+* 학습은 우선 RandomForest를 기반으로 결과를 확인해가며 피쳐 엔지니어링 과정을 통해 성능을 향상시키는 데에 집중하고자 함
 * 이후 하이퍼파라미터 튜닝 및 다른 모델 적용 등의 테스트를 통해 최적의 모델을 선정
 * 모델 평가지표는 RMSE(Root Mean Square Error) 활용
 
@@ -112,7 +116,32 @@
 > Train Data RMSE : 20.48<br>
 > Test Data RMSE : 88.79<br>
 
-&nbsp;&nbsp;=> 의미있는 성능 향상은 나타나지 않음
+&nbsp;&nbsp;=> 추가 검토 및 테스트 결과, 의미있는 성능 향상은 나타나지 않음
 
+-----
 
+### 현 Model 기준 특성 확인 및 시각화
+* Feature importances
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/76440511/153567020-66fceba8-d906-4ad9-94b0-9688b5211730.png">
 
+* Train 데이터 예측 성능 시각화
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/76440511/153567168-135103ef-57f9-479b-9199-691ef6becef3.png">
+
+* Test 데이터 예측 성능 시각화
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/76440511/153567261-75ccb191-9546-4e5f-a392-fe8372fabfff.png">
+
+<br>
+
+## 모델간 성능 비교 및 하이퍼파라미터 튜닝
+<img width="575" alt="image" src="https://user-images.githubusercontent.com/76440511/153567908-3e4dc041-3d76-48e0-86b9-8e4358c8ce98.png">
+
+### 6개 모델간 기본적인 성능 테스트
+<img width="823" alt="image" src="https://user-images.githubusercontent.com/76440511/153567585-d220c846-6dbc-4a77-83e9-08d354652f66.png">
+
+### RandomForest와 LGBM간 최적 성능 비교
+* 6개 모델간 성능 테스트 및 하이퍼파라미터 튜닝 결과
+&nbsp;&nbsp;=> 최종적으로 LGBMRegressor가 Test데이터에 대해 가장 좋은 성능을 나타내는 것으로 확인됨
+
+|RandomForest|LGBM|
+|-|-|
+|<img width="450" alt="image" src="https://user-images.githubusercontent.com/76440511/153568240-375c0d19-9d1b-44e1-be29-51617e81c922.png">|<img width="500" alt="image" src="https://user-images.githubusercontent.com/76440511/153568305-b7f25601-d753-425c-a044-2f4708f6bc7f.png">|
